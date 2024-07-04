@@ -1,5 +1,292 @@
-*{
-     padding: 0;
-     margin: 0;
-     box-sizing: border-box;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+:root {
+    /* TEXT SIZE */
+    --large-size: clamp(3.5rem, 4vmax, 5rem);
+    --medium-size: clamp(1.5rem, 2vmax, 2rem);
+    --small-size: clamp(1.3rem, 1.5vmax, 1.8rem);
+    /* COLOR SIZE */
+    --back-background: #1C1678;
+    --front-background: #8576FF;
+    --main-background: #7BC9FF;
+    --text-color: #A3FFD6;
+    /* GRADIENT */
+    --background-clr: linear-gradient(45deg, #0F67B1, #3FA2F6, #96C9F4, #FAFFAF);
+}
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+h1 {
+    font-size: var(--large-size);
+    color: var(--front-background);
+}
+.btn {
+    cursor: pointer;
+    padding: 1rem 4rem;
+    border: 3px solid transparent;
+    outline: none;
+    border-radius: .3rem;
+    background-image: var(--front-background);
+    background-image: linear-gradient(45deg, var(--front-background), var(--back-background));
+    font-size: var(--small-size);
+    color: #fff;
+    font-weight: bold;
+    transition: .5s;
+}
+.btn:hover{
+    border-style:solid;
+    border-color: #fff;
+    box-shadow: 0 0 1.5rem .15rem var(--main-background);
+}
+body {
+    background-color: #7752FE;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    background-color: var(--main-background);
+    width: max(450px, 65vmax);
+    min-height: 450px;
+    border-radius: 1rem;
+    display: flex;
+    overflow: hidden;
+    flex-flow: row nowrap;
+}
+/*RIGHT CONTAINER*/
+.right-container {
+    flex-basis: 65%;
+    padding: 10rem 12rem 0 3.5rem;
+    background: url("/assets/image/bg-left.gif") no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.right-container p {
+    font-size: var(--small-size);
+    color: var(--front-background);
+    text-shadow: 0 0 1rem 0.8rem var(--back-background);
+    padding: 2.5rem 0;
+}
+/*LEFT CONTAINER*/
+.left-container {
+    background: var(--background-clr);
+    background-size: 400%;
+    flex-basis: 35%;
+    padding: 5rem 3.5rem 3rem;
+    animation: imageLayer 10s infinite alternate;
+}
+@keyframes imageLayer {
+    0%{
+        background-position: left;
+    }
+    100%{
+        background-position: right;
+    }
+}
+.left-container .lf-title-header{
+    color: #fff;
+    margin-bottom: 1rem;
+}
+.left-container hr{
+    width: 100%;
+    height: .5rem;
+    background-color: #fff;
+    border: none;
+    border-radius: 1rem;
+}
+.wrapper-form{
+    padding: 1.5rem 0;
+}
+.wrapper-form .box-form{
+    display: flex;
+    flex-direction: column;
+    padding: .5rem 0;
+}
+.box-form .title-input{
+    font-size: clamp(1rem, 1.5vw, 1.7rem);
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: .3rem;
+}
+.box-form .box-input-form{
+    padding: 1rem 2rem;
+    border: 3px solid transparent;
+}
+.box-form label[for="check"]{
+    cursor: pointer;
+    padding-top: 1rem;
+    font-size: clamp(1rem, 1.5vw, 1.7rem);
+    vertical-align:middle;
+    color: #fff;
+}
+.box-form label[for="check"] input{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: .3rem;
+}
+.box-form .btn-login-form{
+    width: 100%;
+    padding: 1.35rem;
+    text-transform: uppercase;
+    color: #fff;
+}
+.box-form .text-warning{
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: clamp(1rem, 1.5vw, 1.7rem);
+    text-decoration:underline;
+    margin: 1rem 0;
+}
+/*WRAPPER OTHER LOGIN*/
+.wrapper-other-login h2{
+    text-align: center;
+    color: #fff;
+    font-size: var(--medium-size);
+    margin-bottom: 1.2rem;
+}
+.wrapper-box-other-login{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.wrapper-box-other-login .box-oth-login{
+    display: flex;
+    align-items: center;
+    background-color: #7752FE;
+    padding: 1.5rem 3rem;
+    text-decoration: none;
+    color: #fff;
+    font-size: clamp(1.2rem, 1.5vmax, 1.5rem);
+    font-weight: bold;
+}
+.box-oth-login i{
+    font-size: 1.3vw;
+    margin-right: 1.5rem;
+}
+/* BREAKPOINT */
+@media screen and (max-width: 1440px) {
+    .container {
+        width: max(450px, 70vw);
+    }
+    .right-container {
+        flex: 1 1 60%;
+        padding: 10rem 5rem 0 3.5rem;
+    }
+    .left-container {
+        flex: 2 2 40%;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .container {
+        width: max(400px, 50vw);
+    }
+    .right-container {
+        display: none;
+    }
+    .left-container {
+        flex-basis: 100%;
+    }
+    .wrapper-box-other-login .box-oth-login{
+        text-decoration: none;
+        color: #fff;
+        font-size: clamp(1.5rem, 1.5vmax, 1.8rem);
+        font-weight: bold;
+    }
+    .box-oth-login i{
+        font-size: 2vw;
+        margin-right: 1.5rem;
+    }
+}
+@media screen and (max-width: 768px) {
+    .left-container .lf-title-header{
+        font-size: clamp(4rem, 6vmax, 8rem);
+    }
+    .box-form .title-input{
+        font-size: clamp(1.5rem, 1.5vw, 1.7rem);
+    }
+    .box-form label[for="check"]{
+        font-size: clamp(1.5rem, 1.5vw, 1.7rem);
+        vertical-align:middle;
+    }
+    .box-form .text-warning{
+        font-size: clamp(1.5rem, 1.5vw, 1.7rem);
+    }
+    .wrapper-box-other-login{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .wrapper-box-other-login .box-oth-login{
+        border-radius: 5px;
+        padding: 1.8rem 2rem;
+        align-items: center;
+    }
+    .box-oth-login i{
+        font-size: 2.25vw;
+        margin-right: 0;
+    }
+    .box-oth-login span{
+        display: none;
+    }
+}
+@media screen and (max-width: 425px) {
+    body {
+        background-color: unset;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container {
+        width: max(385px, 100%);
+        height: 100vh;
+        border-radius: 0;
+    }
+    .left-container {
+        padding: 7rem 3.5rem 3rem;
+    }
+    .left-container .lf-title-header{
+        font-size: clamp(4rem, 6vmax, 8rem);
+    }
+    .box-form .title-input{
+        font-size: clamp(1.7rem, 1.5vw, 1.7rem);
+    }
+    .box-form label[for="check"]{
+        font-size: clamp(1.7rem, 1.5vw, 1.7rem);
+        vertical-align:text-top;
+    }
+    .box-form .text-warning{
+        font-size: clamp(1.5rem, 1.5vw, 1.7rem);
+    }
+    .box-form .btn-login-form{
+        width: 100%;
+        padding: 1.7rem;
+    }
+    .wrapper-box-other-login{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    .wrapper-box-other-login .box-oth-login{
+        width: 100%;
+    }
+    .box-oth-login i{
+        font-size: 5.5vw;
+        margin-right: 1rem;
+    }
+    .box-oth-login span{
+        display: inline;
+    }
 }
